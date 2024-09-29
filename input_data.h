@@ -20,7 +20,8 @@ enum EventType {
 	ACTION_EVENT = 1,
 	JOY_MOTION_EVENT = 2,
 	JOY_BUTTON_EVENT = 3,
-	NO_EVENT = 4,
+	MOUSE_MOTION_EVENT = 4,
+	NO_EVENT = 5,
 };
 
 struct InputData {
@@ -30,6 +31,7 @@ struct InputData {
 	ActionType action;
 	JoyButton button;
 	JoyAxis axis;
+	Vector2 position;
 	float  axis_value = 0.0f;
 
 	bool operator==(const InputData &other) const {

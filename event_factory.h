@@ -8,19 +8,20 @@
 #include "core/input/input_event.h"
 
 #include "input_data.h"
+#include "scene/main/viewport.h"
 
 class EventFactory {
 
 private:
 	static EventFactory *singleton;
 
-	Ref<InputEvent> create_action_event(InputData &input_data) ;
-	Ref<InputEvent> create_joy_button_event(InputData &input_data);
-	Ref<InputEvent> create_joy_motion_event(InputData &input_data);
-
+	void action_event(InputData &input_data, Viewport* viewport);
+	void joy_button_event(InputData &input_data, Viewport* viewport);
+	void joy_motion_event(InputData &input_data, Viewport* viewport);
+	void mouse_motion_event(InputData &input_data, Viewport* viewport);
 
 public:
-	Ref<InputEvent> instantiate_event(InputData &input_data);
+	void instantiate_event(InputData &input_data, Viewport* viewport);
 
 
 	static EventFactory *get_instance();

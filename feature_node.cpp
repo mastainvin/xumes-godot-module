@@ -139,7 +139,7 @@ void FeatureNode::handle_actions(const Dictionary &event) {
 			inputs = static_cast<Array>(event["inputs"]);
 			unpause_children();
 
-			input_handler.handle(get_viewport(), inputs);
+			input_handler.handle(inputs, get_viewport());
 			push_game_state();
 		}
 	} else {
@@ -169,6 +169,9 @@ Error FeatureNode::handle_methods(const Dictionary &event) {
 				}
 
 				Array args = parameters["args"];
+
+				if (method_name == "set_scene")
+					continue;
 
 				callv(method_name, args);
 			}

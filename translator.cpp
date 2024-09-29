@@ -4,7 +4,9 @@
 
 #include "translator.h"
 
-Translator* Translator::singleton = nullptr;;
+#include <thirdparty/squish/maths.h>
+
+Translator * Translator::singleton = nullptr;;
 
 Translator *Translator::get_instance() {
 	if (singleton == nullptr) {
@@ -41,6 +43,11 @@ InputData Translator::translate_input(Dictionary input) {
 	if (input.has("axis_value")) {
 		float axis_value = input["axis_value"];
 		input_data.axis_value = axis_value;
+	}
+
+	if (input.has("position")) {
+		Array position = input["position"];
+		input_data.position = Vector2(position[0], position[1]);
 	}
 
 	input_data.action = ActionType::DO;

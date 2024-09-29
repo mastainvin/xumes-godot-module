@@ -24,8 +24,8 @@ private:
 	std::unordered_set<InputData, InputData::HashFunction> pressed_inputs;
 
 public:
-	void handle(Viewport *viewport, Array &inputs);
-	void flush(Viewport *viewport);
+	void handle(Array &inputs, Viewport* viewport);
+	void flush(Viewport* viewport);
 
 };
 
